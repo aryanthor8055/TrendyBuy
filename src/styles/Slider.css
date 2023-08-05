@@ -1,0 +1,38 @@
+.image-slider {
+  position: relative;
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.active {
+  background-color: #333;
+}

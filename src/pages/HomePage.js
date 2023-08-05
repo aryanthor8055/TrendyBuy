@@ -8,6 +8,14 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {
+  EffectFade,
+  Autoplay,
+  Navigation,
+  Pagination,
+} from "swiper";
+import "swiper/css/bundle";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -19,6 +27,8 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  SwiperCore.use([Autoplay, Navigation, Pagination]);
 
   //get all cat
   const getAllCategory = async () => {
@@ -106,15 +116,31 @@ const HomePage = () => {
       console.log(error);
     }
   };
+  const Images = ["/images/Banner-1.jpg", "/images/Banner-2.jpg", "/images/Banner-3.jpg"];
   return (
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
-      <img
-        src="/images/banner.png"
+
+      <Swiper
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        effect="fade"
+        modules={[EffectFade]}
+        autoplay={{ delay: 3000 }}
+      >
+        {Images.map((Image) => (
+          <SwiperSlide>
+            <img src={Image} height={500} width="100%" alt="" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* <img
+        src=""
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
-      />
+      /> */}
       {/* banner image */}
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
