@@ -1,8 +1,7 @@
-import { useEffect, useState, useContext, createContext } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
-
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     user: null,
@@ -11,6 +10,7 @@ const AuthProvider = ({ children }) => {
 
   //default axios
   axios.defaults.headers.common["Authorization"] = auth?.token;
+
   useEffect(() => {
     const data = localStorage.getItem("auth");
     if (data) {
@@ -30,8 +30,7 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-//custom hook
-
+// custom hook
 const useAuth = () => useContext(AuthContext);
 
 export { useAuth, AuthProvider };
