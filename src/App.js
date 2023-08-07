@@ -3,12 +3,12 @@ import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Policy from "./pages/Policy";
-import Pagenotfound from "./pages/Pagenotfound";
+import PageNotFound from "./pages/Pagenotfound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/Routes/Private";
-import ForgotPasssword from "./pages/Auth/ForgotPasssword";
+import ForgotPassword from './pages/Auth/ForgotPassword'
 import AdminRoute from "./components/Routes/AdminRoute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CreateCategory from "./pages/Admin/CreateCategory";
@@ -49,12 +49,12 @@ function App() {
           <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
         <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPasssword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
-        <Route path="*" element={<Pagenotfound />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
