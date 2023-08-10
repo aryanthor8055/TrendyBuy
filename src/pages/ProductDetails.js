@@ -10,6 +10,8 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
+const length=relatedProducts.length
+
   //initalp details
   useEffect(() => {
     if (params?.slug) getProduct();
@@ -68,7 +70,7 @@ const ProductDetails = () => {
       <hr />
       <div className="row container similar-products">
         <h4>Similar Products ➡️</h4>
-        {relatedProducts.length < 1 && (
+        {length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
         <div className="d-flex flex-wrap">
