@@ -16,6 +16,7 @@ import SwiperCore, {
   Pagination,
 } from "swiper";
 import "swiper/css/bundle";
+import Spinner from "../components/Layout/Spinner";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const HomePage = () => {
   const [radio, setRadio] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+ 
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -49,7 +51,6 @@ const HomePage = () => {
   //get products
   const getAllProducts = async () => {
     try {
-      setLoading(true);
       const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts(data.products);
@@ -76,7 +77,6 @@ const HomePage = () => {
   //load more
   const loadMore = async () => {
     try {
-      setLoading(true);
       const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
@@ -177,6 +177,9 @@ const HomePage = () => {
         </div>
         <div className="col-md-9 ">
           <h1 className="text-center">All Products</h1>
+          {
+            loading?(<Spinner/>):(
+          
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
@@ -223,6 +226,7 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+          )}
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
