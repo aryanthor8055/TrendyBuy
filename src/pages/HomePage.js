@@ -30,6 +30,8 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
  
 
+
+
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
   //get all cat
